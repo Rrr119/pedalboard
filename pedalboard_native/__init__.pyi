@@ -57,6 +57,8 @@ __all__ = [
     "LowShelfFilter",
     "LowpassFilter",
     "MP3Compressor",
+    "MultibandCompressor",
+    "MultibandCompressorBand",
     "NoiseGate",
     "PeakFilter",
     "Phaser",
@@ -65,6 +67,7 @@ __all__ = [
     "PluginContainer",
     "Resample",
     "Reverb",
+    "ThreeBandCompressor",
     "VST3Plugin",
     "io",
     "process",
@@ -970,6 +973,249 @@ class MP3Compressor(Plugin):
     def vbr_quality(self, arg1: float) -> None:
         pass
     pass
+
+class MultibandCompressorBand:
+    """
+    Live parameter view for one band of a :class:`MultibandCompressor`. Obtained from ``MultibandCompressor.low_band``, ``.mid_band``, or ``.high_band``.
+    """
+
+    def __repr__(self) -> str: ...
+    @property
+    def attack_ms(self) -> float:
+        """ """
+
+    @attack_ms.setter
+    def attack_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def ratio(self) -> float:
+        """ """
+
+    @ratio.setter
+    def ratio(self, arg1: float) -> None:
+        pass
+
+    @property
+    def release_ms(self) -> float:
+        """ """
+
+    @release_ms.setter
+    def release_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def threshold_db(self) -> float:
+        """ """
+
+    @threshold_db.setter
+    def threshold_db(self, arg1: float) -> None:
+        pass
+
+class MultibandCompressor(Plugin):
+    """
+    A three-band compressor with 4th-order Linkwitz-Riley crossovers and a master brick-wall limiter.
+
+    The input is split into low, mid, and high bands at ``low_mid_crossover_hz`` and ``mid_high_crossover_hz``. Each band has independent ``threshold_db``, ``ratio``, ``attack_ms``, and ``release_ms`` controls, available both directly on this object (for example, ``low_threshold_db``) and through the ``low_band``, ``mid_band``, and ``high_band`` parameter views.
+
+    After compression, the bands are summed and passed through a lookahead ``BrickwallLimiter``. The default limiter uses sample-peak detection; set ``output_true_peak=True`` to enable 4x oversampled true-peak detection at a higher CPU cost.
+    """
+
+    def __init__(
+        self,
+        low_mid_crossover_hz: float = 250.0,
+        mid_high_crossover_hz: float = 3000.0,
+        low_threshold_db: float = 0.0,
+        low_ratio: float = 1.0,
+        low_attack_ms: float = 1.0,
+        low_release_ms: float = 100.0,
+        mid_threshold_db: float = 0.0,
+        mid_ratio: float = 1.0,
+        mid_attack_ms: float = 1.0,
+        mid_release_ms: float = 100.0,
+        high_threshold_db: float = 0.0,
+        high_ratio: float = 1.0,
+        high_attack_ms: float = 1.0,
+        high_release_ms: float = 100.0,
+        output_ceiling_db: float = -1.0,
+        output_release_ms: float = 100.0,
+        output_lookahead_ms: float = 5.0,
+        output_true_peak: bool = False,
+    ) -> None: ...
+    def __repr__(self) -> str: ...
+    @property
+    def high_attack_ms(self) -> float:
+        """ """
+
+    @high_attack_ms.setter
+    def high_attack_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def high_band(self) -> MultibandCompressorBand:
+        """ """
+
+    @property
+    def high_crossover_hz(self) -> float:
+        """ """
+
+    @high_crossover_hz.setter
+    def high_crossover_hz(self, arg1: float) -> None:
+        pass
+
+    @property
+    def high_ratio(self) -> float:
+        """ """
+
+    @high_ratio.setter
+    def high_ratio(self, arg1: float) -> None:
+        pass
+
+    @property
+    def high_release_ms(self) -> float:
+        """ """
+
+    @high_release_ms.setter
+    def high_release_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def high_threshold_db(self) -> float:
+        """ """
+
+    @high_threshold_db.setter
+    def high_threshold_db(self, arg1: float) -> None:
+        pass
+
+    @property
+    def low_attack_ms(self) -> float:
+        """ """
+
+    @low_attack_ms.setter
+    def low_attack_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def low_band(self) -> MultibandCompressorBand:
+        """ """
+
+    @property
+    def low_crossover_hz(self) -> float:
+        """ """
+
+    @low_crossover_hz.setter
+    def low_crossover_hz(self, arg1: float) -> None:
+        pass
+
+    @property
+    def low_mid_crossover_hz(self) -> float:
+        """ """
+
+    @low_mid_crossover_hz.setter
+    def low_mid_crossover_hz(self, arg1: float) -> None:
+        pass
+
+    @property
+    def low_ratio(self) -> float:
+        """ """
+
+    @low_ratio.setter
+    def low_ratio(self, arg1: float) -> None:
+        pass
+
+    @property
+    def low_release_ms(self) -> float:
+        """ """
+
+    @low_release_ms.setter
+    def low_release_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def low_threshold_db(self) -> float:
+        """ """
+
+    @low_threshold_db.setter
+    def low_threshold_db(self, arg1: float) -> None:
+        pass
+
+    @property
+    def mid_attack_ms(self) -> float:
+        """ """
+
+    @mid_attack_ms.setter
+    def mid_attack_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def mid_band(self) -> MultibandCompressorBand:
+        """ """
+
+    @property
+    def mid_high_crossover_hz(self) -> float:
+        """ """
+
+    @mid_high_crossover_hz.setter
+    def mid_high_crossover_hz(self, arg1: float) -> None:
+        pass
+
+    @property
+    def mid_ratio(self) -> float:
+        """ """
+
+    @mid_ratio.setter
+    def mid_ratio(self, arg1: float) -> None:
+        pass
+
+    @property
+    def mid_release_ms(self) -> float:
+        """ """
+
+    @mid_release_ms.setter
+    def mid_release_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def mid_threshold_db(self) -> float:
+        """ """
+
+    @mid_threshold_db.setter
+    def mid_threshold_db(self, arg1: float) -> None:
+        pass
+
+    @property
+    def output_ceiling_db(self) -> float:
+        """ """
+
+    @output_ceiling_db.setter
+    def output_ceiling_db(self, arg1: float) -> None:
+        pass
+
+    @property
+    def output_lookahead_ms(self) -> float:
+        """ """
+
+    @output_lookahead_ms.setter
+    def output_lookahead_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def output_release_ms(self) -> float:
+        """ """
+
+    @output_release_ms.setter
+    def output_release_ms(self, arg1: float) -> None:
+        pass
+
+    @property
+    def output_true_peak(self) -> bool:
+        """ """
+
+    @output_true_peak.setter
+    def output_true_peak(self, arg1: bool) -> None:
+        pass
+
+ThreeBandCompressor = MultibandCompressor
 
 class NoiseGate(Plugin):
     """

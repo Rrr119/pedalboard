@@ -1,0 +1,17 @@
+{
+  "root": "/home/dev/feedback/uid26917",
+  "B": "/home/dev/feedback/uid26917",
+  "sha": "a9fa71251210079a963119e98ee816cf5420ec19",
+  "wslDistro": "Ubuntu-26.04",
+  "source": {
+    "owner": "spotify",
+    "repo": "pedalboard",
+    "sha": "a9fa71251210079a963119e98ee816cf5420ec19"
+  },
+  "fork": {
+    "owner": "Rrr119",
+    "repo": "pedalboard",
+    "cloneUrl": "https://github.com/Rrr119/pedalboard.git"
+  },
+  "at": "2026-11-19T06:43:19.088Z"
+}

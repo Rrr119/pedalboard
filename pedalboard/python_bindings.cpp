@@ -59,6 +59,7 @@ namespace py = pybind11;
 #include "plugins/LowpassFilter.h"
 #include "plugins/MP3Compressor.h"
 #include "plugins/Mix.h"
+#include "plugins/MultibandCompressor.h"
 #include "plugins/NoiseGate.h"
 #include "plugins/Phaser.h"
 #include "plugins/PitchShift.h"
@@ -228,6 +229,7 @@ If the number of samples and the number of channels are the same, each
   init_brickwall_limiter(m);
   init_lowpass(m);
   init_mp3_compressor(m);
+  init_multiband_compressor(m);
   init_noisegate(m);
   init_phaser(m);
   init_pitch_shift(m);

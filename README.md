@@ -29,7 +29,7 @@
    - Live audio effects via <a href="https://spotify.github.io/pedalboard/reference/pedalboard.io.html#pedalboard.io.AudioStream"><code class="docutils literal"><span class="pre">AudioStream</span></code></a>
  - Built-in support for a number of basic audio transformations, including:
    - Guitar-style effects: `Chorus`, `Distortion`, `Phaser`, `Clipping`
-   - Loudness and dynamic range effects: `Compressor`, `Gain`, `Limiter`
+   - Loudness and dynamic range effects: `Compressor`, `MultibandCompressor`, `Gain`, `Limiter`
    - Equalizers and filters: `HighpassFilter`, `LadderFilter`, `LowpassFilter`
    - Spatial effects: `Convolution`, `Delay`, `Reverb`
    - Pitch effects: `PitchShift`
